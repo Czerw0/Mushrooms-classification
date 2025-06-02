@@ -2,11 +2,8 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 import os
 
-# Define the base path for the project
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 PROCESSED_DATA_DIR = os.path.join(BASE_DIR, '01_data_processed')
-
-# Ensure the output directory exists
 if not os.path.exists(PROCESSED_DATA_DIR):
     os.makedirs(PROCESSED_DATA_DIR)
     print(f"Created directory: {PROCESSED_DATA_DIR}")
@@ -66,21 +63,18 @@ def split_data_into_halves(input_df_cleaned):
         print(f"An error occurred during data splitting in Data_split.py: {e}")
         return None, None, None
 
-# This part is for direct execution of this script (optional, usually called from Main.py)
+
 if __name__ == "__main__":
-    # For direct testing, you'd need a cleaned DataFrame.
-    # This assumes Data_cleaning.py might have been run and saved a file,
-    # or you have a df_cleaned variable available.
-    # For simplicity, let's assume you'd load the cleaned data if running standalone.
+    '''
+    This part is for direct execution of this script.
+    '''
     try:
         # Example of how you might load cleaned data if running this standalone
         # This path would need to be adjusted based on where the cleaned file is.
-        df_cleaned_for_split = pd.read_csv(os.path.join(PROCESSED_DATA_DIR, 'mushrooms_cleaned.csv'))
+        df_cleaned = pd.read_csv(os.path.join(PROCESSED_DATA_DIR, 'mushrooms_cleaned.csv'))
         print("Data_split.py: Splitting cleaned mushroom data...")
-        split_data_into_halves(df_cleaned_for_split)
+        split_data_into_halves(df_cleaned)
     except FileNotFoundError:
         print("Data_split.py: mushrooms_cleaned.csv not found for standalone test. Run Main.py first.")
     except Exception as e:
         print(f"Data_split.py: Error in standalone execution: {e}")
-
-# --- END OF FILE Data_split.py ---

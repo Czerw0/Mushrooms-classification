@@ -1,8 +1,15 @@
-# --- START OF FILE Data_cleaning.py ---
 import pandas as pd
+import os
 
-# column_mappings remains the same as you provided
+#file mapping
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+PROCESSED_DATA_DIR = os.path.join(BASE_DIR, '01_data_processed')
 
+if not os.path.exists(PROCESSED_DATA_DIR):
+    os.makedirs(PROCESSED_DATA_DIR)
+    print(f"Main.py: Created directory: {PROCESSED_DATA_DIR}")
+
+#column mappings for the mushroom dataset
 column_mappings = {
     'class': {
         'p': 'poisonous',
@@ -188,19 +195,26 @@ def clean_mushroom_data_descriptive(input_df):
     if not isinstance(input_df, pd.DataFrame):
         print("Error in clean_mushroom_data_descriptive: input_df is not a DataFrame.")
         return None
-    df = input_df.copy() # Work on a copy
+    df = input_df.copy() 
     df_cleaned = df.replace(column_mappings)
     return df_cleaned
 
-# This part is for direct execution of this script (optional, usually called from Main.py)
 if __name__ == "__main__":
-    from Data_load import df_original # df_original is loaded when Data_load is imported
+    '''
+    This part is for direct execution of this script.
+    It assumes that df_original is loaded from a module named Data_load.
+    If df_original is not loaded, it will skip the cleaning process.
+    Make sure to run Data_load.py before this script to ensure df_original is available.
+    '''
+    from Data_load import df_original 
     if df_original is not None:
         print("Data_cleaning.py: Cleaning mushroom data...")
-        df_after_cleaning = clean_mushroom_data_descriptive(df_original)
-        if df_after_cleaning is not None:
+        df_cleaned = clean_mushroom_data_descriptive(df_original)
+        if df_cleaned is not None:
+            output_filename_cleaned = os.path.join(PROCESSED_DATA_DIR, 'mushrooms_cleaned.csv')
+            df_cleaned.to_csv(output_filename_cleaned, index=False)
             print("Data_cleaning.py: Data cleaning complete.")
-            print(f"First 5 rows of cleaned data:\n{df_after_cleaning.head()}")
+            print(f"First 5 rows of cleaned data:\n{df_cleaned.head()}")
     else:
         print("Data_cleaning.py: df_original not loaded, skipping cleaning.")
 

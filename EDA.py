@@ -1,15 +1,11 @@
-# --- START OF FILE EDA.py ---
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import os
 
-# Define the base path for the project
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 PROCESSED_DATA_DIR = os.path.join(BASE_DIR, '01_data_processed')
 REPORTS_DIR = os.path.join(BASE_DIR, '04_reports_and_results') # For saving plots
-
-# Ensure the reports directory exists
 if not os.path.exists(REPORTS_DIR):
     os.makedirs(REPORTS_DIR)
     print(f"Created directory: {REPORTS_DIR}")
@@ -21,7 +17,7 @@ def perform_eda(df_for_eda):
 
     print("\nEDA.py: Performing EDA...")
     print("Dataset Information:")
-    df_for_eda.info() # .info() prints directly, no need to wrap in print()
+    df_for_eda.info()
 
     print("\nFirst 5 rows of the dataset:")
     print(df_for_eda.head())
@@ -40,7 +36,7 @@ def perform_eda(df_for_eda):
     sns.countplot(data=df_for_eda, x='class', palette='Set2')
     plt.title('Distribution of Target Variable (Class)')
     plt.savefig(os.path.join(REPORTS_DIR, 'class_distribution.png'))
-    plt.close() # Close the plot to prevent it from displaying if not desired immediately
+    plt.close() 
     print("EDA.py: Saved class distribution plot.")
 
 
@@ -64,13 +60,15 @@ def perform_eda(df_for_eda):
     print("EDA.py: Feature distribution plots saved.")
     print("EDA.py: EDA complete.")
 
-# This part is for direct execution of this script (optional)
+# This part is for direct execution of this script
 if __name__ == "__main__":
+    '''
+    The charts are directly saved to the '04_reports_and_results' subfolder.
+    '''
     try:
-        df_cleaned_for_eda = pd.read_csv(os.path.join(PROCESSED_DATA_DIR, 'mushrooms_cleaned.csv'))
-        perform_eda(df_cleaned_for_eda)
+        df_cleaned = pd.read_csv(os.path.join(PROCESSED_DATA_DIR, 'mushrooms_cleaned.csv'))
+        perform_eda(df_cleaned)
     except FileNotFoundError:
         print("EDA.py: 'mushrooms_cleaned.csv' not found in 01_data_processed. Run Main.py to generate it.")
     except Exception as e:
         print(f"EDA.py: Error in standalone execution: {e}")
-

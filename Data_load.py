@@ -1,4 +1,3 @@
-# --- START OF FILE Data_load.py ---
 import pandas as pd
 import os
 
@@ -7,6 +6,9 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 RAW_DATA_DIR = os.path.join(BASE_DIR, '00_data_raw')
 INPUT_CSV_PATH = os.path.join(RAW_DATA_DIR, 'mushrooms.csv')
 
+''''
+Importing original dataser
+'''
 df_original = None
 try:
     df_original = pd.read_csv(INPUT_CSV_PATH)
