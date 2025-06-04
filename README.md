@@ -47,7 +47,7 @@ A machine learning pipeline to classify mushrooms as **edible** or **poisonous**
     *   Predict on the held-out test set (`h2_features_only`) and compare with true labels (`h2_true_class`).
     *   Save final reports, metrics, and predictions to `04_reports_and_results/` and `01_data_processed/`.
 ---
-## Thouhghts on Project 
+## Thoughts on Project 
 It may seems that the model is overtrained. However this dataset is very simple so it can actually be really accurate
 
 ---
