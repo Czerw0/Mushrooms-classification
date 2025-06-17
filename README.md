@@ -1,10 +1,10 @@
-# 🍄 Mushroom Classification Project
+# Mushroom Classification Project
 
 A machine learning pipeline to classify mushrooms as **edible** or **poisonous** using the UCI Mushroom Dataset. This project demonstrates end-to-end data handling — from ingestion and cleaning to modeling, evaluation, and final predictions.
 
 ---
 
-## 📊 Dataset Information
+## Dataset Information
 
 *   **Source:** [UCI Mushroom Dataset](https://archive.ics.uci.edu/ml/datasets/Mushroom)
 *   **Description:** Hypothetical mushroom species described by 22 categorical features, labeled as either **edible** or **poisonous**.
@@ -15,7 +15,7 @@ A machine learning pipeline to classify mushrooms as **edible** or **poisonous**
 
 ---
 
-## 🧪 Machine Learning Workflow
+## Machine Learning Workflow
 
 *   **Data Loading:**
     *   Load raw dataset from `00_data_raw/` using `Data_load.py`.
@@ -74,7 +74,7 @@ It may seems that the model is overtrained. However this dataset is very simple 
 
 
 ---
-## 📈 Outputs & Reports 
+## Outputs & Reports 
 
 After execution, reports and visualizations will be stored in 04_reports_and_results/.
 
@@ -90,7 +90,7 @@ After execution, reports and visualizations will be stored in 04_reports_and_res
     * Final prediction CSV: mushrooms_h2_final_predictions.csv
 ---
 
-## 🛠️ Setup & Installation
+## Setup & Installation
 
 1.  **Clone the Repository:**
     ```bash
@@ -119,7 +119,7 @@ After execution, reports and visualizations will be stored in 04_reports_and_res
 
 ---
 
-## 🚀 Running the Project
+## Running the Project
 
 The primary way to run the entire pipeline is by executing the main orchestration script:
 
@@ -129,7 +129,7 @@ python mushrooms_classifications.py
 
 ---
 
-## ⚠️ Disclaimer
+## ⚠Disclaimer
 This is a machine learning demo project.
 Do NOT use it to classify or consume wild mushrooms.
 Misidentifying mushrooms can be fatal — always consult a professional mycologist.
